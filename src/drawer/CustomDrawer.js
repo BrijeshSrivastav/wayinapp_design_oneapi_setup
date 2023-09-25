@@ -1,145 +1,227 @@
-import {View, Text, SafeAreaView, FlatList} from 'react-native';
 import React from 'react';
+import {
+  View,
+  Text,
+  ImageBackground,
+  Image,
+  TouchableOpacity,
+  Button,
+  Alert
+} from 'react-native';
+import {
+  DrawerContentScrollView,
+  DrawerItemList,
+} from '@react-navigation/drawer';
+import Icon, {Icons} from '../components/Icons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import { ImageFilesData } from '../constants/images';
 import CommonCard from '../common/CommonCard';
-const data = [
-  {
-    title: 'Starred',
-    icon: require('../star.png'),
-    isNew: false,
-    count: 2,
-  },
-  {
-    title: 'Snoozed',
-    icon: require('../snooze.png'),
-    isNew: false,
-    count: 2,
-  },
-  {
-    title: 'Important',
-    icon: require('../checkbox.png'),
-    isNew: false,
-    count: 2,
-  },
-  {
-    title: 'Sent',
-    icon: require('../send.png'),
-    isNew: false,
-    count: 2,
-  },
-  {
-    title: 'Scheduled',
-    icon: require('../checkbox.png'),
-    isNew: false,
-    count: 2,
-  },
-  {
-    title: 'Outbox',
-    icon: require('../checkbox.png'),
-    isNew: false,
-    count: 2,
-  },
-  {
-    title: 'Drafts',
-    icon: require('../checkbox.png'),
-    isNew: false,
-    count: 2,
-  },
-  {
-    title: 'Archieved',
-    icon: require('../checkbox.png'),
-    isNew: false,
-    count: 2,
-  },
-];
-const CustomDrawer = ({navigation}) => {
+
+const CustomDrawer = (props,{navigation}) => {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={{backgroundColor: 'white', flex: 1}}>
+    <View style={{flex: 1}}>
+      <DrawerContentScrollView
+        {...props}
+        contentContainerStyle={{backgroundColor: '#FFFFFF'}}>
+        <ImageBackground
+          source={ImageFilesData.drawerbackground}
+          style={{padding: 20,justifyContent:'center'}}>
+           <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+           <AntDesign name="arrowleft" size={20} color="#FFFFFF" />
+           <Text
+            style={{
+              color: '#FFFFFF',
+              fontSize: 14,
+              fontFamily: 'Roboto-Medium',
+              fontWeight:'bold',
+              marginBottom: 5,
+              
+            }}>
+            Logout
+          </Text>
+            </View>  
+        <View style={{justifyContent:'center',alignItems:'center'}}>    
+          <Image
+            source={ImageFilesData.profileImagedrawer}
+            style={{height: 80, width: 80, borderRadius: 40, marginBottom: 10}}
+          />
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 14,
+              fontFamily: 'Roboto-Medium',
+              marginBottom: 5,
+            }}>
+           Hello! Mohamed Feroz
+          </Text>
+          </View> 
+        </ImageBackground>
+        <View style={{backgroundColor:'#00EEBE',borderRadius: 10,marginTop:10,height:115,width:260,margin:10}}>
+        <Text
+            style={{
+              color: '#000',
+              fontSize: 13,
+              fontFamily: 'Roboto-Medium',
+              margin:13
+            }}>
+           Grow Your Business by reaching out to 
+          </Text>
+          <View style={{flexDirection:'row'}}>
+          <Text
+            style={{
+              color: '#000',
+              fontSize: 14,
+              fontFamily: 'Roboto-Medium',
+              fontWeight:'bold',
+              padding:10
+            }}>
+            new customers.
+          </Text>
+          <View style={{borderRadius: 20,backgroundColor: '#F39200',}}>
+          <Text
+            style={{
+              fontSize: 14,
+              fontFamily: 'Roboto-Medium',
+              fontWeight:'bold',
+              padding:10
+            }}>
+            Subscribe Now
+          </Text>
+        </View>
+        </View>
+       </View>
+       <View style={{backgroundColor: 'white', flex: 1}}>
         <Text
           style={{
-            color: 'red',
-            fontSize: 27,
-            fontWeight: '700',
+            color: '#000',
+            fontSize: 14,
+            fontWeight: 'bold',
             marginLeft: 20,
           }}>
-          Gmail
+          Profile Setting
         </Text>
         <View
           style={{
             width: '100%',
-            marginTop: 20,
-            height: 70,
+            marginTop: 5,
+            height: 40,
             borderTopWidth: 0.2,
             borderBottomWidth: 0.2,
             borderBottomColor: '#C7C7C7',
             borderTopColor: '#C7C7C7',
           }}>
           <CommonCard
-            icon={require('../checkbox.png')}
+            icontype={Icons.AntDesign}
+            icon="user"
             count={''}
-            title={'All Inboxes'}
+            title={'Personal Information'}
             onClick={() => {
               navigation.closeDrawer();
             }}
           />
         </View>
-        <CommonCard
-          icon={require('../checkbox.png')}
-          count={'10+'}
-          bgColor={'#FFE4E4'}
-          title={'Primary'}
-          onClick={() => {
-            navigation.closeDrawer();
-          }}
-        />
-        <CommonCard
-          icon={require('../checkbox.png')}
-          count={'10+'}
-          newColor={'green'}
-          isNew={true}
-          title={'Social'}
-          onClick={() => {
-            navigation.closeDrawer();
-          }}
-        />
-        <CommonCard
-          icon={require('../checkbox.png')}
-          count={'10+'}
-          newColor={'blue'}
-          isNew={true}
-          title={'Promotions'}
-          onClick={() => {
-            navigation.closeDrawer();
-          }}
-        />
-        <Text
+        <View
           style={{
-            marginTop: 20,
-            marginLeft: 20,
-            fontSize: 17,
-            fontWeight: '700',
-            color: '#8e8e8e',
+            width: '100%',
+            marginTop: 5,
+            height: 40,
+            borderTopWidth: 0.2,
+            borderBottomWidth: 0.2,
+            borderBottomColor: '#C7C7C7',
+            borderTopColor: '#C7C7C7',
           }}>
-          ALL LABELS
-        </Text>
-        <FlatList
-          data={data}
-          renderItem={({item, index}) => {
-            return (
-              <CommonCard
-                title={item.title}
-                icon={item.icon}
-                count={item.count + '+'}
-                onClick={() => {
-                  navigation.closeDrawer();
-                  alert('title :' + item.title);
-                }}
-              />
-            );
-          }}
-        />
+          <CommonCard
+            icontype={Icons.Entypo}
+            icon={"add-to-list"}
+            count={''}
+            title={'AddListing'}
+            onClick={() => {
+              navigation.closeDrawer();
+            }}
+          />
+        </View>
+
+
+        <View
+          style={{
+            width: '100%',
+            marginTop: 5,
+            height: 40,
+            borderTopWidth: 0.2,
+            borderBottomWidth: 0.2,
+            borderBottomColor: '#C7C7C7',
+            borderTopColor: '#C7C7C7',
+          }}>
+          <CommonCard
+            icontype={Icons.MaterialCommunityIcons}
+            icon={"advertisements"}
+            count={''}
+            title={'Adverties with us'}
+            onClick={() => {
+              navigation.closeDrawer();
+            }}
+          />
+        </View>
+
+
+        <View
+          style={{
+            width: '100%',
+            marginTop: 5,
+            height: 40,
+            borderTopWidth: 0.2,
+            borderBottomWidth: 0.2,
+            borderBottomColor: '#C7C7C7',
+            borderTopColor: '#C7C7C7',
+          }}>
+          <CommonCard
+            type={Icons.Ionicons}
+            icon={"notifications-outline"}
+            count={''}
+            title={'Notification'}
+            onClick={() => {
+              navigation.closeDrawer();
+            }}
+          />
+        </View>
+        </View>
+   
+        {/* <View style={{flex: 1, backgroundColor: '#fff', paddingTop: 10}}>
+          <DrawerItemList {...props} />
+        </View>  */}
+      </DrawerContentScrollView>
+      <View style={{padding: 10, borderTopWidth: 1, borderTopColor: '#ccc'}}>
+        <TouchableOpacity onPress={() => {}} style={{paddingVertical: 15}}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Ionicons name="share-social-outline" size={22} />
+            <Text
+              style={{
+                fontSize: 14,
+                fontFamily: 'Roboto-Medium',
+                marginLeft: 5,
+                fontWeight:'bold'
+              }}>
+              Tell a Friend
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}} style={{paddingVertical: 15}}>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Ionicons name="exit-outline" size={22} />
+            <Text
+              style={{
+                fontSize: 14,
+                fontFamily: 'Roboto-Medium',
+                marginLeft: 5,
+              }}>
+              WaYinApp 1.0
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

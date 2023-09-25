@@ -1,7 +1,5 @@
 import Colors from './Colors';
 import images from './images';
-
-
 export const bagsList = [
   {
     id: '101',
