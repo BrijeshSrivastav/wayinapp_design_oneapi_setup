@@ -19,7 +19,31 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { ImageFilesData } from '../constants/images';
 import CommonCard from '../common/CommonCard';
 
-const CustomDrawer = (props,{navigation}) => {
+
+const CustomDrawer = (props) => {
+ 
+  const MenuArr = [
+    {
+      type: Icons.AntDesign,
+      activeIcon: 'user',
+      title:'Personal Information'
+    },
+    {
+      type: Icons.Entypo,
+      activeIcon: 'add-to-list',
+      title:'AddListing' 
+    },
+    {
+      type: Icons.MaterialCommunityIcons,
+      activeIcon: 'advertisements',
+      title:'Adverties with us' 
+    },
+    {
+      type: Icons.Ionicons,
+      activeIcon: 'notifications-outline',
+      title:'Notification'
+    },
+  ];
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView
@@ -29,7 +53,9 @@ const CustomDrawer = (props,{navigation}) => {
           source={ImageFilesData.drawerbackground}
           style={{padding: 20,justifyContent:'center'}}>
            <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-           <AntDesign name="arrowleft" size={20} color="#FFFFFF" />
+           <AntDesign name="arrowleft" size={20} color="#FFFFFF"   onPress={() => {
+              props.navigation.closeDrawer();
+            }}/>
            <Text
             style={{
               color: '#FFFFFF',
@@ -102,90 +128,32 @@ const CustomDrawer = (props,{navigation}) => {
           }}>
           Profile Setting
         </Text>
+        {MenuArr.map((item, index) => {
+        return (
         <View
+         key={index}
           style={{
             width: '100%',
-            marginTop: 5,
-            height: 40,
+            marginTop: 2,
+            height: 70,
             borderTopWidth: 0.2,
             borderBottomWidth: 0.2,
             borderBottomColor: '#C7C7C7',
             borderTopColor: '#C7C7C7',
           }}>
           <CommonCard
-            icontype={Icons.AntDesign}
-            icon="user"
+            title={item.title}
+            icon={item.activeIcon}
+            icontype={item.type}
             count={''}
-            title={'Personal Information'}
             onClick={() => {
-              navigation.closeDrawer();
+              props.navigation.closeDrawer();
             }}
           />
         </View>
-        <View
-          style={{
-            width: '100%',
-            marginTop: 5,
-            height: 40,
-            borderTopWidth: 0.2,
-            borderBottomWidth: 0.2,
-            borderBottomColor: '#C7C7C7',
-            borderTopColor: '#C7C7C7',
-          }}>
-          <CommonCard
-            icontype={Icons.Entypo}
-            icon={"add-to-list"}
-            count={''}
-            title={'AddListing'}
-            onClick={() => {
-              navigation.closeDrawer();
-            }}
-          />
-        </View>
-
-
-        <View
-          style={{
-            width: '100%',
-            marginTop: 5,
-            height: 40,
-            borderTopWidth: 0.2,
-            borderBottomWidth: 0.2,
-            borderBottomColor: '#C7C7C7',
-            borderTopColor: '#C7C7C7',
-          }}>
-          <CommonCard
-            icontype={Icons.MaterialCommunityIcons}
-            icon={"advertisements"}
-            count={''}
-            title={'Adverties with us'}
-            onClick={() => {
-              navigation.closeDrawer();
-            }}
-          />
-        </View>
-
-
-        <View
-          style={{
-            width: '100%',
-            marginTop: 5,
-            height: 40,
-            borderTopWidth: 0.2,
-            borderBottomWidth: 0.2,
-            borderBottomColor: '#C7C7C7',
-            borderTopColor: '#C7C7C7',
-          }}>
-          <CommonCard
-            type={Icons.Ionicons}
-            icon={"notifications-outline"}
-            count={''}
-            title={'Notification'}
-            onClick={() => {
-              navigation.closeDrawer();
-            }}
-          />
-        </View>
+          );
+        })}
+       
         </View>
    
         {/* <View style={{flex: 1, backgroundColor: '#fff', paddingTop: 10}}>
