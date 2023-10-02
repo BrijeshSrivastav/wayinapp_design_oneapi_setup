@@ -185,8 +185,6 @@ export default function UserList() {
             color: '#000',
             fontSize: 14,
             fontWeight: 'bold',
-            marginLeft: 20,
-            marginTop:30
           }}>
          
           {item.headingtitle}
@@ -204,10 +202,9 @@ export default function UserList() {
                 borderBottomColor: '#C7C7C7',
                 borderTopColor: '#C7C7C7',
               }}>
-                {/* <Text>{subitem.imgenam}</Text> */}
               <CommonCard
                 title={subitem.title}
-                imagens={subitem.imgenam}
+                imagen={subitem.imgenam}
                 icontype={subitem.type}
                 count={''}
                

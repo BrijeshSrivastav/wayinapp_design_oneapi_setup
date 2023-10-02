@@ -1,45 +1,42 @@
-import React, { useState,useEffect } from 'react';
+import React, {useEffect, useRef} from 'react';
 import {View,Text,Image,TouchableOpacity,TextInput,Pressable} from 'react-native'
-import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import { ImageFilesData } from '../constants/images';
-
-
+import Icon, {Icons} from '../components/Icons';
+import CurrentlocationComponent from '../components/CurrentlocationComponent'
 const Header=({navigation})=>{
-
     return(
-        <View style={{height:60, flexDirection:'row',justifyContent:'space-between',elevation:4,}}>
-         <View style={{marginTop:10,marginLeft:10,flexDirection:'row'}} 
+        <View style={{height:60, flexDirection:'row',justifyContent:'space-between',elevation:4,backgroundColor:'#FFF'}}>
+         <View style={{marginTop:20,marginLeft:10,flexDirection:'row'}} 
          >
          <TouchableOpacity
+           onPress={() => navigation.openDrawer()}
             >
-            <Image source={ImageFilesData.logo}
+    
+            <Image source={ImageFilesData.menu}
              resizeMode='contain'
              style={{
-               width:40,
+               width:20,
+               height:20,
+             }}
+            />
+         
+         </TouchableOpacity>
+          </View>
+
+        <CurrentlocationComponent />
+        <View style={{flexDirection:'row',justifyContent:'space-around',marginTop:10}}>
+        <TouchableOpacity
+            >
+            <Image source={ImageFilesData.headerlogo}
+             resizeMode='contain'
+              style={{
+               width:100,
                height:40,
+               marginRight:20
              }}
             />
          </TouchableOpacity>
          
-          </View>
-
-        <View style={{flexDirection:'row',justifyContent:'space-around',marginTop:10}}>
-      
-            
-            <TouchableOpacity
-             //onPress={() => navigateTo()}
-             >
-             <EvilIcons 
-                    name="user"
-                    size={35}
-                    style={{
-                      width:35,
-                      height:35,
-                      color:"#000"
-                     // color:"#4860F5"
-                    }}
-                />
-           </TouchableOpacity>
         </View> 
         </View>)
 

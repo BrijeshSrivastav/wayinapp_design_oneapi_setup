@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Fragment} from 'react';
 import {
   View,
   Text,
@@ -6,8 +6,11 @@ import {
   Image,
   TouchableOpacity,
   Button,
-  Alert
+  Alert,
+  Platform,
+  SafeAreaView
 } from 'react-native';
+//import {Platform, StyleSheet} from 'react-native';
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -24,34 +27,104 @@ const CustomDrawer = (props) => {
  
   const MenuArr = [
     {
-      type: Icons.AntDesign,
+    headingtitle:"Profile Setting",
+    submenuitem:[{
+      imgenam: ImageFilesData.userimg,
       activeIcon: 'user',
       title:'Personal Information'
     },
     {
-      type: Icons.Entypo,
+      imgenam: ImageFilesData.notemedical,
       activeIcon: 'add-to-list',
       title:'AddListing' 
     },
     {
-      type: Icons.MaterialCommunityIcons,
+      imgenam: ImageFilesData.megaphone,
       activeIcon: 'advertisements',
       title:'Adverties with us' 
     },
     {
-      type: Icons.Ionicons,
+      imgenam: ImageFilesData.bell,
       activeIcon: 'notifications-outline',
       title:'Notification'
-    },
-  ];
+    }],
+},
+{
+  headingtitle:"Useful Links",
+  submenuitem:[{
+    imgenam: ImageFilesData.messagesdollar,
+    activeIcon: 'user',
+    title:'Refer & Earn'
+  },
+  {
+    imgenam:ImageFilesData.memopad,
+    activeIcon: 'add-to-list',
+    title:'Terms &  Conditions' 
+  },
+  {
+    imgenam: ImageFilesData.shieldexclamation,
+    activeIcon: 'advertisements',
+    title:'Privacy Policy' 
+  },
+  {
+  imgenam: ImageFilesData.handshake,
+    activeIcon: 'notifications-outline',
+    title:'Investor Relations'
+  },
+  {
+    imgenam: ImageFilesData.Union2,
+    activeIcon: 'notifications-outline',
+    title:'App Feed Back'
+  }
+],
+},
+{
+  headingtitle:"Support",
+  submenuitem:[{
+    imgenam: ImageFilesData.Union3,
+    activeIcon: 'user',
+    title:'Help'
+  },
+  {
+    imgenam: ImageFilesData.squarestar,
+    activeIcon: 'add-to-list',
+    title:'Rate the app' 
+  },
+],
+},
+{
+  headingtitle:"Preferences",
+  submenuitem:[{
+    imgenam: ImageFilesData.globe,
+    activeIcon: 'user',
+    title:'Language'
+  },
+  {
+    imgenam: ImageFilesData.marker,
+    activeIcon: 'add-to-list',
+    title:'City' 
+  },
+  {
+    imgenam: ImageFilesData.Union4,
+    activeIcon: 'add-to-list',
+    title:'Settings' 
+  },
+],
+}
+];
   return (
+    <Fragment>
+    <SafeAreaView style={{ flex: 0, backgroundColor: '#069199' }} />
     <View style={{flex: 1}}>
       <DrawerContentScrollView
         {...props}
         contentContainerStyle={{backgroundColor: '#FFFFFF'}}>
+       
         <ImageBackground
           source={ImageFilesData.drawerbackground}
-          style={{padding: 20,justifyContent:'center'}}>
+          //resizeMode='contains'
+          >
+          <View style={{margin: 20,justifyContent:'center'}}>
            <View style={{flexDirection:'row',justifyContent:'space-between'}}>
            <AntDesign name="arrowleft" size={20} color="#FFFFFF"   onPress={() => {
               props.navigation.closeDrawer();
@@ -83,7 +156,9 @@ const CustomDrawer = (props) => {
            Hello! Mohamed Feroz
           </Text>
           </View> 
+          </View>
         </ImageBackground>
+        
         <View style={{backgroundColor:'#00EEBE',borderRadius: 10,marginTop:10,height:115,width:260,margin:10}}>
         <Text
             style={{
@@ -119,62 +194,53 @@ const CustomDrawer = (props) => {
         </View>
        </View>
        <View style={{backgroundColor: 'white', flex: 1}}>
+       {MenuArr.map((item, index) => { 
+      return (
+        <View>
         <Text
           style={{
             color: '#000',
             fontSize: 14,
             fontWeight: 'bold',
             marginLeft: 20,
+            marginTop:30
           }}>
-          Profile Setting
+         
+          {item.headingtitle}
         </Text>
-        {MenuArr.map((item, index) => {
-        return (
-        <View
-         key={index}
-          style={{
-            width: '100%',
-            marginTop: 2,
-            height: 70,
-            borderTopWidth: 0.2,
-            borderBottomWidth: 0.2,
-            borderBottomColor: '#C7C7C7',
-            borderTopColor: '#C7C7C7',
-          }}>
-          <CommonCard
-            title={item.title}
-            icon={item.activeIcon}
-            icontype={item.type}
-            count={''}
-            onClick={() => {
-              props.navigation.closeDrawer();
-            }}
-          />
+          {item.submenuitem.map((subitem, index2) => {
+            return (
+            <View
+             key={index2}
+              style={{
+                width: '100%',
+                marginTop: 2,
+                height: Platform.OS === 'ios' ? 40 : 65,
+                borderTopWidth: 0.2,
+                borderBottomWidth: 0.2,
+                borderBottomColor: '#C7C7C7',
+                borderTopColor: '#C7C7C7',
+              }}>
+              <CommonCard
+                title={subitem.title}
+                imagens={subitem.imgenam}
+                icontype={subitem.type}
+                count={''}
+               
+              />
+            </View>
+              );
+            })}
+          </View>
+          )
+    })}
         </View>
-          );
-        })}
-       
-        </View>
-   
+      
         {/* <View style={{flex: 1, backgroundColor: '#fff', paddingTop: 10}}>
           <DrawerItemList {...props} />
         </View>  */}
       </DrawerContentScrollView>
-      <View style={{padding: 10, borderTopWidth: 1, borderTopColor: '#ccc'}}>
-        <TouchableOpacity onPress={() => {}} style={{paddingVertical: 15}}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Ionicons name="share-social-outline" size={22} />
-            <Text
-              style={{
-                fontSize: 14,
-                fontFamily: 'Roboto-Medium',
-                marginLeft: 5,
-                fontWeight:'bold'
-              }}>
-              Tell a Friend
-            </Text>
-          </View>
-        </TouchableOpacity>
+       <View style={{padding: 5, borderTopWidth: 1, borderTopColor: '#ccc'}}>
         <TouchableOpacity onPress={() => {}} style={{paddingVertical: 15}}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Ionicons name="exit-outline" size={22} />
@@ -188,8 +254,9 @@ const CustomDrawer = (props) => {
             </Text>
           </View>
         </TouchableOpacity>
-      </View>
+      </View> 
     </View>
+  </Fragment>
   );
 };
 

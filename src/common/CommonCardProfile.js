@@ -3,12 +3,12 @@ import React from 'react';
 import Icon, {Icons} from '../components/Icons';
 const CommonCard = ({
   title,
-  imagens,
+  icon,
   icontype,
   count,
   onClick,
 }) => {
- //alert(imagens);
+  //alert(icontype);
   return (
     <View style={{width: '100%', height: 70, justifyContent: 'center'}}>
       <TouchableOpacity
@@ -27,13 +27,16 @@ const CommonCard = ({
           onClick();
         }}>
         <View style={{flexDirection: 'row', alignItems: 'center',justifyContent:'flex-end'}}>
-        <View style={{ borderRadius:25, borderWidth:0.5, borderColor:'#C1C1C1',backgroundColor:'#FFF',marginLeft:15,marginRight:10,marginBottom:10,marginTop:12,height:32,width:32}}>
-          <Image
-            source={imagens}
-            style={{marginLeft:10,marginRight:10,marginBottom:10,marginTop:10}}
-            
+          <Icon
+            type={icontype}
+            name={icon}
+            style={{
+              width: 24,
+              height: 24,
+              marginLeft: 5,
+             // tintColor: bgColor ? 'red' : '#6D6D6D',
+            }}
           />
-          </View>
           <Text
             style={{
               marginLeft: 7,

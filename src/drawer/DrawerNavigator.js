@@ -10,7 +10,7 @@ const DrawerNavigator = () => {
       <Drawer.Screen
         name="Main"
         component={Main}
-        options={{headerShown: true}}
+        options={{headerShown: false}}
       />
     </Drawer.Navigator>
   );

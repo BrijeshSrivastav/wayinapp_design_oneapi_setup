@@ -1,68 +1,68 @@
-import {View, Text, FlatList, Dimensions, TouchableOpacity} from 'react-native';
+import {View, Text, FlatList, Dimensions, TouchableOpacity,SafeAreaView,StyleSheet} from 'react-native';
 import React, {useState} from 'react';
+import Categoriesheader from '../components/Categoriesheader';
 const {height, width} = Dimensions.get('window');
-export default function Category() {
-  const [data, SetData] = useState([1, 1, 1, 1, 1]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+import CategoryItem from '../components/CategoryItem';
+import { ImageFilesData } from '../constants/images';
+export default function Category({navigation}) {
+  const DATA = [
+    {
+      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+      categoryname: 'Deals',
+      cat_img:ImageFilesData.weightlifting
+    },
+    {
+      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+      categoryname: 'Restaurent',
+      cat_img:ImageFilesData.restaurant
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      categoryname: 'Gym',
+      cat_img:ImageFilesData.weightlifting
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      categoryname: 'Massage',
+      cat_img:ImageFilesData.massage
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      categoryname: 'Beauty',
+      cat_img:ImageFilesData.makeup
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      categoryname: 'Hospital',
+      cat_img:ImageFilesData.weightlifting
+    },
+    {
+      id: '58694a0f-3da1-471f-bd96-145571e29d72',
+      categoryname: 'Deals',
+      cat_img:ImageFilesData.loudspeaker
+    },
+  ];
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <View
-        style={{
-          height: height / 2 + 100,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        <FlatList
-          data={data}
-          showsHorizontalScrollIndicator={false}
-          pagingEnabled
-          onScroll={e => {
-            const x = e.nativeEvent.contentOffset.x;
-            setCurrentIndex((x / width).toFixed(0));
-          }}
-          horizontal
-          renderItem={({item, index}) => {
-            return (
-              <View
-                style={{
-                  width: width - 50,
-                  height: height / 2,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <TouchableOpacity
-                  disabled={true}
-                  style={{
-                    width: '90%',
-                    height: '90%',
-                    backgroundColor: 'green',
-                    borderRadius: 10,
-                  }}></TouchableOpacity>
-              </View>
-            );
-          }}
-        />
+    <SafeAreaView style={styles.container}>
+     <Categoriesheader navigation={navigation}/>
+     <View style={styles.listviewM}>
+     <FlatList
+        data={DATA}
+        renderItem={({item}) => <CategoryItem itemData={item} navigation={navigation}/>}
+        keyExtractor={item => item.id}
+        numColumns={4}
+      />
       </View>
-      <View
-        style={{
-          flexDirection: 'row',
-          width: width,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-        {data.map((item, index) => {
-          return (
-            <View
-              style={{
-                width: currentIndex == index ? 50 : 8,
-                height: currentIndex == index ? 10 : 8,
-                borderRadius: currentIndex == index ? 5 : 4,
-                backgroundColor: currentIndex == index ? 'green' : 'gray',
-                marginLeft: 5,
-              }}></View>
-          );
-        })}
-      </View>
-    </View>
+    </SafeAreaView>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFF',
+  },
+  
+  listviewM:{
+    marginTop:60
+  }
+});

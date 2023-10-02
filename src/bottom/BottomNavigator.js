@@ -62,17 +62,17 @@ const TabButton = props => {
   const viewRef = useRef(null);
 
   useEffect(() => {
-    if (focused) {
-      viewRef.current.animate({
-        0: {scale: 0.5, rotate: '0deg'},
-        1: {scale: 1.5, rotate: '360deg'},
-      });
-    } else {
-      viewRef.current.animate({
-        0: {scale: 1.5, rotate: '360deg'},
-        1: {scale: 1, rotate: '0deg'},
-      });
-    }
+    // if (focused) {
+    //   viewRef.current.animate({
+    //     0: {scale: 0.5, rotate: '0deg'},
+    //     1: {scale: 1.5, rotate: '360deg'},
+    //   });
+    // } else {
+    //   viewRef.current.animate({
+    //     0: {scale: 1.5, rotate: '360deg'},
+    //     1: {scale: 1, rotate: '0deg'},
+    //   });
+    // }
   }, [focused]);
 
   return (
@@ -84,7 +84,7 @@ const TabButton = props => {
         <Icon
           type={item.type}
           name={focused ? item.activeIcon : item.inActiveIcon}
-          color={focused ? Colors.primary : Colors.primaryLite}
+          color={focused ? Colors.primary : "#000"}
           style={focused ? styles.iconstyleactive : styles.iconstyleInactive}
         />
         <Text style={focused ? styles.texttyleactive : styles.texttyleInactive}>
@@ -103,10 +103,10 @@ export default function BottomNavigator() {
         tabBarStyle: {
           height: 65,
           position: 'absolute',
-          bottom: 16,
-          right: 16,
-          left: 16,
-          borderRadius: 16,
+          //bottom: 16,
+          //right: 16,
+          //left: 16,
+          borderRadius: 5,
         },
       }}>
       {TabArr.map((item, index) => {
