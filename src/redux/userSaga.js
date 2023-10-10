@@ -9,8 +9,11 @@ function* getAllUser(action) {
 
 
 function* fetchUser(action) {
+  //alert(JSON.stringify(action))
   try {
-    const user = yield axios.get('http://leadadmin.appsfiber.com/adminapi/manage_admin_users.php');;
+    //alert("www");
+    const user = yield axios.get('https://askwayin.com/api/home');
+    //alert("uuu "+JSON.stringify(user));
     yield put(setUserList(user))
   } catch (e) {
     yield put(errorUserList(e.message))

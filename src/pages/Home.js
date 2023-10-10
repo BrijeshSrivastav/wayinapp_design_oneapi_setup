@@ -5,7 +5,7 @@
  * @format
  */
 
-import React,{useEffect} from 'react';
+import  React,{useEffect,useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -30,9 +30,11 @@ import Header from '../components/Header';
 import Icon, {Icons} from '../components/Icons';
 import CarouseBanner from '../components/CarouseBanner'
 import {homePageApi} from '../normalapi'
+import { useSelector, useDispatch } from 'react-redux'
+import {getUserList} from '../redux/useraction'
 function Home({navigation}) {
   const isDarkMode = useColorScheme() === 'dark';
-
+  const dispatch = useDispatch()
   const getData=async ()=>{
     await homePageApi().then((res)=>{
       console.log(res);
@@ -44,6 +46,14 @@ function Home({navigation}) {
   useEffect(() => {
     getData();
   }, []);
+ 
+  let userList=useSelector((state)=>state.userReducer.userList);
+  let isloding=useSelector((state)=>state.userReducer.isloding);
+  useEffect(() => {
+    //Runs only on the first render
+    dispatch(getUserList(true));
+  },[dispatch]);
+  //alert(JSON.stringify(userList));
 
   function aaa(){
     Alert.alert('Click here for voice search ');
