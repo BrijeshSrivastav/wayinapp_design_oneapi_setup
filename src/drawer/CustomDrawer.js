@@ -29,22 +29,35 @@ const CustomDrawer = (props) => {
     {
     headingtitle:"Profile Setting",
     submenuitem:[{
-      imgenam: ImageFilesData.userimg,
-      activeIcon: 'user',
+      id:1,
+      route: 'Personalnfo',
+      //imgenam: ImageFilesData.userimg,
+      type: Icons.Ionicons,
+      activeIcon: 'person-outline',
       title:'Personal Information'
+      //component: Personalnfo,
     },
     {
-      imgenam: ImageFilesData.notemedical,
-      activeIcon: 'add-to-list',
+      id:2,
+      route: 'AddListing',
+      //imgenam: ImageFilesData.notemedical,
+      type: Icons.Ionicons,
+      activeIcon: 'list-outline',
       title:'AddListing' 
     },
     {
-      imgenam: ImageFilesData.megaphone,
-      activeIcon: 'advertisements',
+      id:3,
+      route: 'advertisements',
+      //imgenam: ImageFilesData.megaphone,
+      type: Icons.Ionicons,
+      activeIcon: 'megaphone-outline',
       title:'Adverties with us' 
     },
     {
-      imgenam: ImageFilesData.bell,
+      id:4,
+      route: 'Notification',
+      //imgenam: ImageFilesData.bell,
+      type: Icons.Ionicons,
       activeIcon: 'notifications-outline',
       title:'Notification'
     }],
@@ -52,28 +65,43 @@ const CustomDrawer = (props) => {
 {
   headingtitle:"Useful Links",
   submenuitem:[{
-    imgenam: ImageFilesData.messagesdollar,
-    activeIcon: 'user',
+    id:5,
+    route: 'user',
+    //imgenam: ImageFilesData.messagesdollar,
+    type: Icons.Ionicons,
+    activeIcon: 'wallet-outline',
     title:'Refer & Earn'
   },
   {
-    imgenam:ImageFilesData.memopad,
-    activeIcon: 'add-to-list',
+    id:6,
+    route: 'TermsConditions',
+    //imgenam:ImageFilesData.memopad,
+    type: Icons.Ionicons,
+    activeIcon: 'reader-outline',
     title:'Terms &  Conditions' 
   },
   {
-    imgenam: ImageFilesData.shieldexclamation,
-    activeIcon: 'advertisements',
+    id:7,
+    route: 'PrivacyPolicy',
+    //imgenam: ImageFilesData.shieldexclamation,
+    type: Icons.Ionicons,
+    activeIcon: 'shield-checkmark-outline',
     title:'Privacy Policy' 
   },
   {
-  imgenam: ImageFilesData.handshake,
-    activeIcon: 'notifications-outline',
+    id:8,
+    route: 'InvestorRelations',
+  //imgenam: ImageFilesData.handshake,
+  type: Icons.Ionicons,
+    activeIcon: 'people-outline',
     title:'Investor Relations'
   },
   {
-    imgenam: ImageFilesData.Union2,
-    activeIcon: 'notifications-outline',
+    id:9,
+    route: 'AppFeedBack',
+    //imgenam: ImageFilesData.Union2,
+    type: Icons.Ionicons,
+    activeIcon: 'thumbs-up-outline',
     title:'App Feed Back'
   }
 ],
@@ -81,13 +109,19 @@ const CustomDrawer = (props) => {
 {
   headingtitle:"Support",
   submenuitem:[{
-    imgenam: ImageFilesData.Union3,
-    activeIcon: 'user',
+    id:10,
+    route: 'Help',
+    //imgenam: ImageFilesData.Union3,
+    type: Icons.Ionicons,
+    activeIcon: 'help-circle-outline',
     title:'Help'
   },
   {
-    imgenam: ImageFilesData.squarestar,
-    activeIcon: 'add-to-list',
+    id:11,
+    route: 'Ratetheapp',
+    //imgenam: ImageFilesData.squarestar,
+    type: Icons.Ionicons,
+    activeIcon: 'star-outline',
     title:'Rate the app' 
   },
 ],
@@ -95,18 +129,27 @@ const CustomDrawer = (props) => {
 {
   headingtitle:"Preferences",
   submenuitem:[{
-    imgenam: ImageFilesData.globe,
-    activeIcon: 'user',
+    id:12,
+    route: 'Language',
+    //imgenam: ImageFilesData.globe,
+    type: Icons.Ionicons,
+    activeIcon: 'globe-outline',
     title:'Language'
   },
   {
-    imgenam: ImageFilesData.marker,
-    activeIcon: 'add-to-list',
+    id:13,
+    route: 'City',
+    //imgenam: ImageFilesData.marker,
+    type: Icons.Ionicons,
+    activeIcon: 'location-outline',
     title:'City' 
   },
   {
-    imgenam: ImageFilesData.Union4,
-    activeIcon: 'add-to-list',
+    id:14,
+    route: 'Settings',
+    //imgenam: ImageFilesData.Union4,
+    type: Icons.Ionicons,
+    activeIcon: 'settings-outline',
     title:'Settings' 
   },
 ],
@@ -158,8 +201,8 @@ const CustomDrawer = (props) => {
           </View> 
           </View>
         </ImageBackground>
-        
-        <View style={{backgroundColor:'#00EEBE',borderRadius: 10,marginTop:10,height:115,width:260,margin:10}}>
+      
+        <View style={{backgroundColor:'#00EEBE',borderRadius: 10,height:90,margin:10}}>
         <Text
             style={{
               color: '#000',
@@ -169,7 +212,8 @@ const CustomDrawer = (props) => {
             }}>
            Grow Your Business by reaching out to 
           </Text>
-          <View style={{flexDirection:'row'}}>
+   
+         <View style={{flexDirection:'row'}}>
           <Text
             style={{
               color: '#000',
@@ -180,24 +224,38 @@ const CustomDrawer = (props) => {
             }}>
             new customers.
           </Text>
-          <View style={{borderRadius: 20,backgroundColor: '#F39200',}}>
+          <TouchableOpacity style={{borderRadius: 5,backgroundColor: '#F39200',marginRight:40,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
           <Text
             style={{
-              fontSize: 14,
+              fontSize: 13,
               fontFamily: 'Roboto-Medium',
-              fontWeight:'bold',
-              padding:10
+              fontWeight:'normal',
+              padding:5,
+              textAlign:'center',
+              color:'#FFF'
             }}>
             Subscribe Now
           </Text>
-        </View>
+          <Icon
+            type={Icons.AntDesign}
+            name="arrowright"
+            size={15}
+            style={{marginRight:10}}
+            />
+        </TouchableOpacity>
+         
         </View>
        </View>
+       
        <View style={{backgroundColor: 'white', flex: 1}}>
        {MenuArr.map((item, index) => { 
       return (
-        <View>
+       
+        <View
+        //key={index.toString}
+        >
         <Text
+           key={index.toString}
           style={{
             color: '#000',
             fontSize: 14,
@@ -210,25 +268,32 @@ const CustomDrawer = (props) => {
         </Text>
           {item.submenuitem.map((subitem, index2) => {
             return (
+              <>
             <View
-             key={index2}
+              key={subitem.id.toString}
               style={{
                 width: '100%',
-                marginTop: 2,
-                height: Platform.OS === 'ios' ? 40 : 65,
-                borderTopWidth: 0.2,
-                borderBottomWidth: 0.2,
-                borderBottomColor: '#C7C7C7',
-                borderTopColor: '#C7C7C7',
+                height: Platform.OS === 'ios' ? 60 : 65,
               }}>
               <CommonCard
+                //key={subitem.id.toString}
+                route={subitem.route}
                 title={subitem.title}
-                imagens={subitem.imgenam}
+                imagens={subitem.activeIcon}
                 icontype={subitem.type}
                 count={''}
                
               />
             </View>
+            {subitem.title=== "Notification"  &&
+              (<View style={{height:0.3,width:'90%',backgroundColor:'#B8B8B8',marginLeft:5, marginTop:15}}/>)}
+               {subitem.title=== "App Feed Back"  &&
+              (<View style={{height:0.3,width:'90%',backgroundColor:'#B8B8B8',marginLeft:5, marginTop:15}}/>)}
+               {subitem.title=== "Rate the app" &&
+              (<View style={{height:0.3,width:'90%',backgroundColor:'#B8B8B8',marginLeft:5, marginTop:15}}/>)}
+               {subitem.title=== "Settings"  &&
+              (<View style={{height:0.3,width:'90%',backgroundColor:'#B8B8B8',marginLeft:5, marginTop:15}}/>)}
+              </>
               );
             })}
           </View>

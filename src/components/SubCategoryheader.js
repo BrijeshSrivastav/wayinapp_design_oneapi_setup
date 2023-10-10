@@ -8,7 +8,7 @@ const SubCategoryheader=(props)=>{
     return(
      <View style={styles.container}> 
      <View
-         style={{backgroundColor:'#F3FAFF'}}
+         style={{backgroundColor:'#E8F5F6'}}
           >
           <View style={styles.locationview}>  
           <TouchableOpacity onPress={()=>props.navigation.goBack()}>
@@ -29,8 +29,8 @@ const SubCategoryheader=(props)=>{
            </View>
            <View>
               <Image
-                source={ImageFilesData.subcate_app_logo}
-                style={{marginTop:10,marginRight:20}}
+                source={require('../../imgss/log_new_clr.png')}
+                style={{marginTop:15,marginRight:20, width:25, height:34,}}
             />
            </View>
           </View>
@@ -45,9 +45,9 @@ const SubCategoryheader=(props)=>{
                 style={{backgroundColor:'#FFF', flex:1}}
             />
             <TouchableOpacity >
-              <Image
-                source={require('../../imgss/micc.png')}
-                style={{ height: 20, width: 20, margin:5 }}/>
+            <Image
+                  source={require('../../imgss/microphone.png')}
+                  style={{ height: 20, width: 20, margin:5,tintColor:'#7B7B7B'}}/>
             </TouchableOpacity>
           </View>
         </View>

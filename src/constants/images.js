@@ -25,23 +25,37 @@ export const ImageFilesData = {
     subcate_image13: require("../assets/images/image13.png"),
     subcate_image14: require("../assets/images/image14.png"),
     subcate_image15: require("../assets/images/image15.png"),
-    userimg: require("../assets/images/Union1.png"),
-    notemedical: require("../assets/images/note-medical.png"),
-    globe: require("../assets/images/globe.png"),
-    bell: require("../assets/images/bell.png"),
-    handshake: require("../assets/images/handshake.png"),
-    marker: require("../assets/images/marker.png"),
-    megaphone: require("../assets/images/megaphone1.png"),
-    memopad: require("../assets/images/memo-pad.png"),
-    notemedical: require("../assets/images/note-medical.png"),
-    shieldexclamation: require("../assets/images/shield-exclamation.png"),
-    messagesdollar: require("../assets/images/messages-dollar.png"),
-    squarestar: require("../assets/images/square-star.png"),
-    Union3: require("../assets/images/Union3.png"),
-    Union2: require("../assets/images/Union2.png"),
-    Union4: require("../assets/images/Union4.png"),
+    userimg: require("../assets/images/user.svg"),
+    notemedical: require("../assets/images/notemedical.svg"),
+    globe: require("../assets/images/globe.svg"),
+    bell: require("../assets/images/bell.svg"),
+    handshake: require("../assets/images/handshake.svg"),
+    marker: require("../assets/images/marker.svg"),
+    megaphone: require("../assets/images/megaphone.svg"),
+    memopad: require("../assets/images/memo-pad.svg"),
+    notemedical: require("../assets/images/notemedical.svg"),
+    shieldexclamation: require("../assets/images/shield-exclamation.svg"),
+    messagesdollar: require("../assets/images/messages-dollar.svg"),
+    squarestar: require("../assets/images/square-star.svg"),
+    Union3: require("../assets/images/interrogation.svg"),
+    Union2: require("../assets/images/comment-alt.svg"),
+    Union4: require("../assets/images/settings.svg"),
 
 
+    home_img_active: require("../assets/images/houseblank_active.svg"),
+    home_img_inactive: require("../assets/images/houseblank_inactive.svg"),
+    
+    cat_img_active: require("../assets/images/poll_active_cat.svg"),
+    cat_img_inactive: require("../assets/images/poll_inactive_cat.svg"),
+    
+    fav_img_active: require("../assets/images/star_active.svg"),
+    fav_img_inactive: require("../assets/images/starinactive.svg"),
+
+    help_img_active: require("../assets/images/commentquestion_active.svg"),
+    help_img_inactive: require("../assets/images/commentquestion_inactive.svg"),
+
+    profile_img_active: require("../assets/images/user_active.svg"),
+    profile_img_inactive: require("../assets/images/user_inactive.svg"),
   };
 //const logo = require("../assets/images/wiyanwhite.png");
 

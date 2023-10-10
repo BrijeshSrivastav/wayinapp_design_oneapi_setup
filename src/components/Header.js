@@ -22,8 +22,9 @@ const Header=({navigation})=>{
          
          </TouchableOpacity>
           </View>
-
+          <View style={{marginRight:55}}>
         <CurrentlocationComponent />
+        </View>
         <View style={{flexDirection:'row',justifyContent:'space-around',marginTop:10}}>
         <TouchableOpacity
             >

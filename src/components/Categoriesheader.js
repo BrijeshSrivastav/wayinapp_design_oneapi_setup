@@ -43,9 +43,9 @@ const Categoriesheader=(props)=>{
                 style={{backgroundColor:'#FFF', flex:1}}
             />
             <TouchableOpacity >
-              <Image
-                source={require('../../imgss/micc.png')}
-                style={{ height: 20, width: 20, margin:5 }}/>
+            <Image
+                  source={require('../../imgss/microphone.png')}
+                  style={{ height: 20, width: 20, margin:5,tintColor:'#7B7B7B'}}/>
             </TouchableOpacity>
           </View>
         </View>

@@ -77,10 +77,10 @@ export default function SubCategory({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
      <SubCategoryheader navigation={navigation}/>
-     <View style={{height:110,width:300,borderRadius:30,marginTop:5,marginLeft:10,marginRight:10}}>
+     <View style={{height:110,width:300,borderRadius:15,marginTop:1,marginLeft:10,marginRight:10}}>
       <Image
         source={ImageFilesData.subcate_banner}
-        style={{height:110,width:350,borderRadius:30}}
+        style={{height:110,width:350,borderRadius:15}}
     /> 
    </View>
      <View style={styles.listviewM}>
@@ -101,6 +101,6 @@ const styles = StyleSheet.create({
   },
   
   listviewM:{
-    marginTop:0
+    marginTop:15
   }
 });

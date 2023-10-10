@@ -10,49 +10,94 @@ import Favourites from '../pages/Favourites';
 import Help from '../pages/Help';
 
 import * as Animatable from 'react-native-animatable';
+import { ImageFilesData } from '../constants/images';
+import SvgUri from 'react-native-svg-uri';
 
 const TabArr = [
   {
     route: 'Home',
     label: 'Home',
-    type: Icons.Ionicons,
+    type: Icons.SimpleLineIcons,
     activeIcon: 'home',
-    inActiveIcon: 'home-outline',
+    inActiveIcon: 'home',
     component: Home,
   },
   {
     route: 'Category',
     label: 'Categories',
-    type: Icons.Ionicons,
+    type: Icons.SimpleLineIcons,
     activeIcon: 'grid',
-    inActiveIcon: 'grid-outline',
+    inActiveIcon: 'grid',
     component: Category,
   },
   {
     route: 'UserList',
     label: 'Account',
-    type: Icons.FontAwesome,
-    activeIcon: 'user-circle',
-    inActiveIcon: 'user-circle-o',
+    type: Icons.SimpleLineIcons,
+    activeIcon: 'user',
+    inActiveIcon: 'user',
     component: UserList,
   },
   {
     route: 'Favourites',
     label: 'Favourites',
-    type: Icons.MaterialCommunityIcons,
-    activeIcon: 'heart-plus',
-    inActiveIcon: 'heart-plus-outline',
+    type: Icons.SimpleLineIcons,
+    activeIcon: 'heart',
+    inActiveIcon: 'heart',
     component: Favourites,
   },
   {
     route: 'Help',
     label: 'Help',
-    type: Icons.MaterialCommunityIcons,
-    activeIcon: 'message-processing',
-    inActiveIcon: 'message-processing-outline',
+    type: Icons.SimpleLineIcons,
+    activeIcon: 'bubble',
+    inActiveIcon: 'bubble',
     component: Help,
   },
 ];
+
+// const TabArr = [
+//   {
+//     route: 'Home',
+//     label: 'Home',
+//     type: ImageFilesData.home_img_active,
+//     activeIcon: ImageFilesData.home_img_active,
+//     inActiveIcon: ImageFilesData.home_img_inactive,
+//     component: Home,
+//   },
+//   {
+//     route: 'Category',
+//     label: 'Categories',
+//     type: ImageFilesData.cat_img_active,
+//     activeIcon: ImageFilesData.cat_img_active,
+//     inActiveIcon: ImageFilesData.cat_img_inactive,
+//     component: Category,
+//   },
+//   {
+//     route: 'UserList',
+//     label: 'Account',
+//     type: ImageFilesData.profile_img_active,
+//     activeIcon: ImageFilesData.profile_img_active,
+//     inActiveIcon: ImageFilesData.profile_img_inactive,
+//     component: UserList,
+//   },
+//   {
+//     route: 'Favourites',
+//     label: 'Favourites',
+//     type: ImageFilesData.fav_img_active,
+//     activeIcon: ImageFilesData.fav_img_active,
+//     inActiveIcon: ImageFilesData.fav_img_inactive,
+//     component: Favourites,
+//   },
+//   {
+//     route: 'Help',
+//     label: 'Help',
+//     type: ImageFilesData.help_img_active,
+//     activeIcon: ImageFilesData.help_img_active,
+//     inActiveIcon: ImageFilesData.help_img_inactive,
+//     component: Help,
+//   },
+// ];
 
 const Tab = createBottomTabNavigator();
 
@@ -85,8 +130,10 @@ const TabButton = props => {
           type={item.type}
           name={focused ? item.activeIcon : item.inActiveIcon}
           color={focused ? Colors.primary : "#000"}
+          size={20}
           style={focused ? styles.iconstyleactive : styles.iconstyleInactive}
         />
+          {/* <SvgUri width="18" height="18" source={focused ? item.activeIcon : item.inActiveIcon} /> */}
         <Text style={focused ? styles.texttyleactive : styles.texttyleInactive}>
           {item.label}
         </Text>
@@ -144,10 +191,12 @@ const styles = StyleSheet.create({
   },
   texttyleactive: {
     fontSize: 8,
-    marginTop:3,
+    marginTop:5,
+    color:'#000'
   },
   texttyleInactive: {
     fontSize: 10,
-    marginTop:3,
+    marginTop:5,
+    color:'#000'
   },
 });
