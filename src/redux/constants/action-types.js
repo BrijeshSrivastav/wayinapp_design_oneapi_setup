@@ -1,0 +1,5 @@
+export const ActionTypes = {
+    SET_USER_LIST: "SET_USER_LIST",
+    GET_USER_LIST: "GET_USER_LIST",
+    SET_USER_LIST_ERROR: "SET_USER_LIST_ERROR",
+  };

@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React,{useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -29,12 +29,21 @@ import { ImageSlider } from "react-native-image-slider-banner";
 import Header from '../components/Header';
 import Icon, {Icons} from '../components/Icons';
 import CarouseBanner from '../components/CarouseBanner'
+import {homePageApi} from '../normalapi'
 function Home({navigation}) {
   const isDarkMode = useColorScheme() === 'dark';
 
-  // const backgroundStyle = {
-  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  // };
+  const getData=async ()=>{
+    await homePageApi().then((res)=>{
+      console.log(res);
+     // alert(JSON.stringify(res));
+    }).catch((error)=>{
+      console.log(error);
+    })
+  }
+  useEffect(() => {
+    getData();
+  }, []);
 
   function aaa(){
     Alert.alert('Click here for voice search ');
